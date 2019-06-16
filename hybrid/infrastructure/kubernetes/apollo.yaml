@@ -32,12 +32,12 @@ spec:
 ---
 apiVersion: v1
 kind: Service
-apiVersion: v1
 metadata:
   name: apollo
   namespace: servicecomb
 spec:
   type: NodePort
+  externalIPs: ["192.168.0.39"]
   selector:
     app: apollo-configcenter
   ports:
@@ -83,7 +83,6 @@ spec:
 ---
 apiVersion: v1
 kind: Service
-apiVersion: v1
 metadata:
   name: mysql
   namespace: servicecomb

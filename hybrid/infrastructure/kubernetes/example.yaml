@@ -15,7 +15,7 @@ spec:
       containers:
       - name: hello-provider
         image: "gomesh/helloprovider:latest"
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         env:
         - name: REGISTRY
           value: "http://service-center.servicecomb:30100"
@@ -25,7 +25,6 @@ spec:
 ---
 apiVersion: v1
 kind: Service
-apiVersion: v1
 metadata:
   name: hello-provider
 spec:
@@ -57,7 +56,7 @@ spec:
       containers:
         - name: hello-consumer
           image: "gomesh/helloconsumer:latest"
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           env:
           - name: TARGET
             value: hello-provider
@@ -69,7 +68,6 @@ spec:
 ---
 apiVersion: v1
 kind: Service
-apiVersion: v1
 metadata:
   name: hello-consumer
 spec:
@@ -81,4 +79,3 @@ spec:
     port: 80
     nodePort: 30180
     targetPort: 80
-  type: NodePort
